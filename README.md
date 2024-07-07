@@ -1,52 +1,56 @@
-# Project Name
-> Outline a brief description of your project.
-
+# Melanoma Detection Assignment
 
 ## Table of Contents
 * [General Info](#general-information)
 * [Technologies Used](#technologies-used)
 * [Conclusions](#conclusions)
-* [Acknowledgements](#acknowledgements)
-
-<!-- You can include any other section that is pertinent to your problem -->
 
 ## General Information
-- Provide general information about your project here.
-- What is the background of your project?
-- What is the business probem that your project is trying to solve?
-- What is the dataset that is being used?
+#### Problem statement: To build a CNN based model which can accurately detect melanoma. Melanoma is a type of cancer that can be deadly if not detected early. It accounts for 75% of skin cancer deaths. A solution which can evaluate images and alert the dermatologists about the presence of melanoma has the potential to reduce a lot of manual effort needed in diagnosis.
 
-<!-- You don't have to answer all the questions - just the ones relevant to your project. -->
 
-## Conclusions
-- Conclusion 1 from the analysis
-- Conclusion 2 from the analysis
-- Conclusion 3 from the analysis
-- Conclusion 4 from the analysis
+The dataset consists of 2357 images of malignant and benign oncological diseases, which were formed from the International Skin Imaging Collaboration (ISIC). All images were sorted according to the classification taken with ISIC, and all subsets were divided into the same number of images, with the exception of melanomas and moles, whose images are slightly dominant.
+The data set contains the following diseases:
 
-<!-- You don't have to answer all the questions - just the ones relevant to your project. -->
+1. Actinic keratosis
+2. Basal cell carcinoma
+3. Dermatofibroma
+4. Melanoma
+5. Nevus
+6. Pigmented benign keratosis
+7. Seborrheic keratosis
+8. Squamous cell carcinoma
+9. Vascular lesion
+ 
 
+NOTE: You don't have to use any pre-trained model using Transfer learning. All the model building process should be based on a custom model.
 
 ## Technologies Used
-- library - version 1.0
-- library - version 2.0
-- library - version 3.0
+- pandas
+- matplotlib
+- tensorflow
+- keras
+- Augmentor
+- google colab
+- google drive
 
-<!-- As the libraries versions keep on changing, it is recommended to mention the version of library used in this project -->
-
-## Acknowledgements
-Give credit here.
-- This project was inspired by...
-- References if any...
-- This project was based on [this tutorial](https://www.example.com).
+## Conclusions
+- We started with a simple CNN model with following configuration:
+    - Rescaling Layer - for scaling pixel values in 0-1 range
+    - Convolutional Layer 1 - 32 filters with 3x3 kernel size and ReLU Activation
+    - Max Pooling Layer 1 - 3x3 pool size
+    - Convolutional Layer 2 - 64 filters with 3x3 kernel size and ReLU Activation
+    - Max Pooling Layer 2 - 3x3 pool size
+    - Convolutional Layer 3 - 128 filters with 3x3 kernel size and ReLU Activation
+    - Max Pooling Layer 3 - 3x3 pool size
+    - Flatten Layer
+    - Dense Layer 1 - 512 units and ReLU Activation
+    - Output Layer - Dense layer with softmax activation for the 9 output classes
+- This provided an overfitting model with high training accuracy and low validation accuracy
+- We built a second model by adding augmentation, dropouts, L2 regularization which removed the overfitting. But accuracy rate was still 52-56%
+- We used augmentor to remove the class imbalance by creating more samples in each classes. 
+- We built a third model with more samples removing class imbalance, introducing batch normalization and increasing the number of epochs. This increased the accuracy but more number of epochs seems to have introduced more overfitting.
 
 
 ## Contact
-Created by [@githubusername] - feel free to contact me!
-
-
-<!-- Optional -->
-<!-- ## License -->
-<!-- This project is open source and available under the [... License](). -->
-
-<!-- You don't have to include all sections - just the one's relevant to your project -->
+Created by [@prasune] - feel free to contact me!
